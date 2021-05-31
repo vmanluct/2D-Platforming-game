@@ -9,15 +9,22 @@ void Game::initWindow()
 	this->window.setFramerateLimit(60);
 }
 
+
 void Game::initPlayer()
 {
 	this->player = new Player();
+}
+
+void Game::initTileMap()
+{
+	this->tile = new TileMap();
 }
 
 Game::Game()
 {
 	this->initWindow();
 	this->initPlayer();
+	this->initTileMap();
 }
 
 Game::~Game()
@@ -28,6 +35,43 @@ Game::~Game()
 void Game::updatePlayer()
 {
 	this->player->update();
+}
+
+void Game::updateTileMap()
+{
+	this->tile->update();
+}
+
+void Game::updateWallCollision()
+{
+	FloatRect playerBounds = this->player->getGlobalBounds();
+	FloatRect wallBounds;
+	for (int i = 0; i < tile->loadCounter.x; i++) {
+		for (int j = 0; j < tile->loadCounter.y; j++) {
+			wallBounds = tile->tiles[i][j]->getGlobalBounds();
+
+			//Check how to handle collision will world
+			if (wallBounds.intersects(playerBounds)) {
+				//Player is underneath block
+				if (wallBounds.top <= playerBounds.top) {
+					this->player->resetVelocityY();
+					this->player->setCanJump(false);
+				}
+
+				//Player is above block
+				else {
+					this->player->resetVelocityY();
+					this->player->setCanJump(true);
+					this->player->setOnGround(true);
+					this->player->setPosition(
+						this->player->getPosition().x,
+						wallBounds.top - this->player->getGlobalBounds().height
+					);
+				}
+			}
+			this->player->setOnGround(false); //When player is no longer on a block, allow falling
+		}
+	}
 }
 
 void Game::updateCollision()
@@ -41,6 +85,13 @@ void Game::updateCollision()
 			this->player->getPosition().x,
 			this->window.getSize().y - this->player->getGlobalBounds().height
 		);
+		this->player->setCanJump(true);
+	}
+	//Collision with Ceiling
+	else if (this->player->getPosition().y + this->player->getGlobalBounds().height
+		<= this->player->getGlobalBounds().height) {
+		this->player->resetVelocityY();
+		this->player->setCanJump(false);
 	}
 }
 
@@ -67,7 +118,11 @@ void Game::update()
 			this->player->resetAnimationTimer();
 		}
 	}
+
+	//Update all images on screen
 	this->updatePlayer();
+	this->updateTileMap();
+	this->updateWallCollision();
 	this->updateCollision();
 }
 
@@ -76,12 +131,19 @@ void Game::renderPlayer()
 	this->player->render(this->window);
 }
 
+void Game::renderTileMap()
+{
+	this->tile->render(this->window);
+}
+
+
 void Game::render()
 {
 	this->window.clear();
 
 	//Render game objects
 	this->renderPlayer();
+	this->renderTileMap();
 
 	this->window.display();
 }

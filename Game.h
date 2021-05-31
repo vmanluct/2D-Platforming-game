@@ -3,6 +3,8 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include "Player.h"
+#include "TileMap.h"
+
 
 using namespace sf;
 class Game
@@ -14,9 +16,14 @@ private:
 	Event ev;
 
 	Player* player;
+	TileMap* tile;
+
 
 	void initWindow();
+
 	void initPlayer();
+
+	void initTileMap();
 
 public:
 	//Constructor and Destructor
@@ -26,9 +33,12 @@ public:
 
 	//Functions
 	void updatePlayer();
+	void updateTileMap();
+	void updateWallCollision();
 	void updateCollision();
 	void update();
 	void renderPlayer();
+	void renderTileMap();
 	void render();
 	const RenderWindow& getWindow();
 };

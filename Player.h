@@ -26,7 +26,8 @@ private:
 	float drag;
 	float gravity;
 	float velocityMaxY;
-
+	bool canJump;
+	bool onGround;
 
 	//Core
 
@@ -40,14 +41,20 @@ public:
 	Player();
 	virtual ~Player();
 
+
+
 	//Accssors
 	const bool& getAnimSwitch();
 	const Vector2f getPosition() const;
 	const FloatRect getGlobalBounds() const;
+	const bool getCanJump() const;
+	const bool getOnGround() const;
 
 	//Modifiers
 	void setPosition(const float x, const float y);
 	void resetVelocityY();
+	void setCanJump(bool jump);
+	void setOnGround(bool ground);
 
 
 	//Functions

@@ -3,6 +3,8 @@
 void Player::initVariables()
 {
 	this->animState = IDLE;
+	this->canJump = true;
+	this->onGround = false;
 }
 
 void Player::initTexture()
@@ -16,7 +18,7 @@ void Player::initSprite()
 	this->sprite.setTexture(this->textureSheet);
 	this->currentFrame = IntRect(0, 0, 40, 50);
 	this->sprite.setTextureRect(this->currentFrame);
-	this->sprite.setScale(3.f, 3.f);
+	this->sprite.setScale(1.f, 1.f);
 }
 
 void Player::initAnimations()
@@ -67,6 +69,16 @@ const FloatRect Player::getGlobalBounds() const
 	return this->sprite.getGlobalBounds();
 }
 
+const bool Player::getCanJump() const
+{
+	return this->canJump;
+}
+
+const bool Player::getOnGround() const
+{
+	return this->onGround;
+}
+
 void Player::setPosition(const float x, const float y)
 {
 	this->sprite.setPosition(x, y);
@@ -75,6 +87,16 @@ void Player::setPosition(const float x, const float y)
 void Player::resetVelocityY()
 {
 	this->velocity.y = 0.f;
+}
+
+void Player::setCanJump(bool jump)
+{
+	this->canJump = jump;
+}
+
+void Player::setOnGround(bool ground)
+{
+	this->onGround = ground;
 }
 
 void Player::resetAnimationTimer()
@@ -98,8 +120,9 @@ void Player::move(const float dir_x, const float dir_y)
 void Player::updatePhysics()
 {
 	//Gravity
-	this->velocity.y += 1 * this->gravity;
-
+	if (!onGround) {
+		this->velocity.y += 1 * this->gravity;
+	}
 	//Limit gravity
 	if (abs(this->velocity.y) > this->velocityMaxY) {
 		this->velocity.y = this->velocityMaxY* ((this->velocity.y < 0.f) ? -1.f : 1.f);
@@ -129,7 +152,7 @@ void Player::updateMovement()
 		this->move(1.f, 0.f);
 		this->animState = MOVING_RIGHT;
 	}
-	else if (Keyboard::isKeyPressed(Keyboard::Space)) //Jump
+	if (Keyboard::isKeyPressed(Keyboard::Space) && this->canJump) //Jump
 	{
 		this->move(0.f, -10.f);
 		this->animState = JUMPING;
@@ -172,7 +195,7 @@ void Player::updateAnimations()
 			this->animationTimer.restart();
 			this->sprite.setTextureRect(this->currentFrame);
 		}			
-		this->sprite.setScale(3.f, 3.f);
+		this->sprite.setScale(1.f, 1.f);
 		this->sprite.setOrigin(0.f, 0.f);
 	}
 	else if (this->animState == MOVING_LEFT) {
@@ -186,8 +209,8 @@ void Player::updateAnimations()
 			this->animationTimer.restart();
 			this->sprite.setTextureRect(this->currentFrame);
 		}
-		this->sprite.setScale(-3.f, 3.f);
-		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 3.f, 0.f);
+		this->sprite.setScale(-1.f, 1.f);
+		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 1.f, 0.f);
 	}
 	else
 		this->animationTimer.restart();

@@ -9,61 +9,66 @@ using namespace sf;
 class Player
 {
 private:
-	Sprite sprite;
-	Texture textureSheet;
-	Clock animationTimer;
+	Sprite sprite; //player sprite
+	Texture textureSheet; //texture with all animations for player
+	Clock animationTimer; //timer to see how long each animation has gone
 
 	//Animation
-	short animState;
-	IntRect currentFrame;
-	bool animSwitch;
+	short animState; //what animation state player is in
+	IntRect currentFrame; //rectangle to determine what texture is displayed
+	bool animSwitch; //if the next animation should be played
 
 	//Physics
-	Vector2f velocity;
-	float velocityMax;
-	float velocityMin;
-	float acceleration;
-	float drag;
-	float gravity;
-	float velocityMaxY;
-	bool canJump;
-	bool onGround;
+	Vector2f velocity; //velocity of player
+	float velocityMax; //limiting value for velocity
+	float velocityMin; 
+	float acceleration; //value for how to accelerate player
+	float drag; //value to limit and slow down player
+	float gravity; 
+	float velocityMaxY; //max Y force to limit gravity and jump height
+	bool canJump; //if the player can jump
+	bool onGround; //if the player is on the ground
+	bool faceLeft; //what direction player is facing
 
-	//Core
 
-	void initVariables();
+	//Initializers
+	void initVariables(); 
 	void initTexture();
 	void initSprite();
 	void initAnimations();
 	void initPhysics();
 
 public:
-	Player();
-	virtual ~Player();
+	Player(); //Constructor
+	virtual ~Player(); //Destructor
 
 
 
 	//Accssors
-	const bool& getAnimSwitch();
-	const Vector2f getPosition() const;
-	const FloatRect getGlobalBounds() const;
-	const bool getCanJump() const;
-	const bool getOnGround() const;
+	const bool& getAnimSwitch(); //get what animation state player is in
+	const Vector2f getPosition() const; //get current position of player
+	const FloatRect getGlobalBounds() const; //get hitbox for player
+	const bool getCanJump() const; //check if player can jump
+	const bool getOnGround() const; //check if player is on the ground
+	const bool getFaceLeft() const; //check if player is facing left
+
 
 	//Modifiers
-	void setPosition(const float x, const float y);
-	void resetVelocityY();
-	void setCanJump(bool jump);
-	void setOnGround(bool ground);
+	void setPosition(const float x, const float y); //set position of player
+	void resetVelocityY(); //set velocity of player to 0
+	void setCanJump(bool jump); //set if player can jump
+	void setOnGround(bool ground); //set if player is on the ground
+	void setFaceLeft(bool direction); //set what direction player is facing
+
 
 
 	//Functions
-	void resetAnimationTimer();
-	void move(const float dir_x, const float dir_y);
-	void updatePhysics();
-	void updateMovement();
-	void updateAnimations();
-	void update();
-	void render(RenderTarget& target);
+	void resetAnimationTimer(); //reset timer for animation state
+	void move(const float dir_x, const float dir_y); //control movement of player
+	void updatePhysics(); //apply gravity, and velocities to the player
+	void updateMovement(); // use velocities to update speed of player
+	void updateAnimations(); //change the animation based on player's action
+	void update(); //move player to new position
+	void render(RenderTarget& target); //draw player to window
 };
 

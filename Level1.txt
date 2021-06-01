@@ -1,9 +1,18 @@
 images/ground_tile_sheet.png
-x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
-x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
-x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
-x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
-x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
-x,x x,x x,x x,x x,x 0,1 1,0 1,1 x,x x,x
-x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
-0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0
+x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
+x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
+x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
+x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
+x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
+x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x 1,1 1,1 1,1 1,1 1,1 1,1 x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
+x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x 1,1 1,1 1,1 1,1 1,1 1,1 x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
+x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
+x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x
+5,0 5,0 5,0 5,0 5,0 5,0 x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x 5,0 5,0 5,0 5,0 5,0 5,0
+5,0 5,0 5,0 5,0 5,0 5,0 x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x 5,0 5,0 5,0 5,0 5,0 5,0
+5,0 5,0 5,0 5,0 5,0 5,0 x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x 5,0 5,0 5,0 5,0 5,0 5,0
+5,0 5,0 5,0 5,0 5,0 5,0 x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x 5,0 5,0 5,0 5,0 5,0 5,0
+5,0 5,0 5,0 5,0 5,0 5,0 x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x 5,0 5,0 5,0 5,0 5,0 5,0
+5,0 5,0 5,0 5,0 5,0 5,0 x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x 5,0 5,0 5,0 5,0 5,0 5,0
+5,0 5,0 5,0 5,0 5,0 5,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 5,0 5,0 5,0 5,0 5,0 5,0
+5,0 5,0 5,0 5,0 5,0 5,0 x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x x,x 5,0 5,0 5,0 5,0 5,0 5,0
